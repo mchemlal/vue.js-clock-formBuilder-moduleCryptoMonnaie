@@ -2,7 +2,7 @@
   <div id="app">
       <router-link to="/">Home</router-link> |
       <router-link to="/formulaire">Formulaire</router-link> |
-      <router-link to="/todo">Todo</router-link>
+      <router-link to="/bitcoin">Crypto-monnaies</router-link>
     <router-view />
   </div>
 </template>
