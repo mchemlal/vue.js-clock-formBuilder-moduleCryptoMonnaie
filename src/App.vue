@@ -1,9 +1,9 @@
 <template>
   <div id="app">
       <router-link to="/">Home</router-link> |
-      <router-link to="/formulaire">Formulaire</router-link> 
-      <router-link to="/bitcoin">Crypto-monnaies</router-link>
-      <router-link to="/bitcoin">L'horloge</router-link>
+      <router-link to="/formulaire">Formulaire</router-link> |
+      <router-link to="/bitcoin">Crypto-monnaies</router-link> |
+      <router-link to="/clock">L'horloge</router-link> |
     <router-view />
   </div>
 </template>
