@@ -1,26 +1,34 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import home from '../views/home.vue'
 
 Vue.use(VueRouter)
 
-const NotFound = { template: '<p>Page not found</p>' }
-const Home = { template: '<p>home page</p>' }
-const About = { template: '<p>about page</p>' }
-
-const routes = {
-  '/': Home,
-  '/about': About
-}
-
-new Vue({
-  el: '#app',
-  data: {
-    currentRoute: window.location.pathname
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: home
   },
-  computed: {
-    ViewComponent () {
-      return routes[this.currentRoute] || NotFound
-    }
+  {
+    path: '/formulaire',
+    name: 'formulaire',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/formulaire.vue')
   },
-  render (h) { return h(this.ViewComponent) }
+  {
+    path: '/bitcoin',
+    name: 'bitcoin',
+    component: () => import('../views/bitcoin.vue')
+  }
+]
+
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: routes,
 })
+
+export default router
