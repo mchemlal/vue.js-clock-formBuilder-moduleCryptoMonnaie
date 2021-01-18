@@ -17,6 +17,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/formulaire.vue')
+<<<<<<< HEAD
+=======
+  },
+  {
+    path: '/bitcoin',
+    name: 'bitcoin',
+    component: () => import('../views/bitcoin.vue')
+>>>>>>> 86275df40ec3ddc8b6d4ab53d5d8f9718f8753cc
   }
 ]
 
