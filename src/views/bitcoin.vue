@@ -15,6 +15,7 @@
         <li>news</li>
         <li>Learn</li>
         <li>More</li>
+        <li>salut</li>
      </ul>
      </div>
      <div class="searchBar">
