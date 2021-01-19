@@ -64,9 +64,9 @@ export default {
      methods : {
          getCryptos(){
              axios
-                .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=15&page=1');
+                .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=15&page=1')
                 .then(response => this.cryptos = response.data)
-                .catch(erreur => this.cryptos = [title: "erreur de chargement"]);
+                .catch(erreur => this.cryptos = [title: "erreur de chargement"])
          }
      }
 }
