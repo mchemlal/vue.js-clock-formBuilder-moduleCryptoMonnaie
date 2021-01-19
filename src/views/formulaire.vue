@@ -1,13 +1,13 @@
 <template>
   <div>
     <FormBuilder :schema="schema" :model="model"></FormBuilder>   <!--- Props from FormBuilder = data() from script -->
-    <el-button @click="visible = true">Button</el-button>
+    <FormBuilder :schemaRadio="schemaRadio" :modelRadio="modelRadio"></FormBuilder>
     <el-card class="box-card">
   <div slot="header" class="clearfix">
     <span>All Elements</span>
   </div>
   <div v-for="o in 4" :key="o" class="text item" >
-    <el-button type="text">Bouton</el-button>
+    <el-button type="text" v-on:click="show = !show" >Bouton</el-button>
   </div>
 </el-card>
   </div>
@@ -23,18 +23,21 @@ export default {
      data() {
         return {
           schema: {
-            fields: [{
+            fields: 
+            [{
             inputType: "textarea",
             label: "TextArea",
             model: "areavalue"
+            },{
+            inputType: "radiobox",
+            label: "RadioBox",
+            model: "radiovalue"
             }]
-          }, 
+            },
           model: {
-            areavalue: ""
-          },
-          methods: {
-
-          },
+            areavalue: "",
+            radiovalue: ""
+          }
         }
      }
 }
@@ -62,4 +65,12 @@ export default {
     width: 480px;
     height: 600px;
   }
+
+  .fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 </style>
