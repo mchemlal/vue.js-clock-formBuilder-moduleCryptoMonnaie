@@ -1,9 +1,9 @@
 <template>
     <div>
-      <div v-for="(item, index) in schema.fields" :key="index">
-          <component :is="getCompo(item)"></component>
-      </div>
-</div>
+      <component v-for="(item, index) in schema.fields" 
+                :key="index"
+                :is="getCompo(item)"></component>
+    </div>
 </template>
 
 
