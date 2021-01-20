@@ -31,20 +31,38 @@
                 <span>{{ crypto.image }} </span>
                 <span>{{ crypto.name }} </span>
             </div>
-          </div>
+          </div> -->
         </div>
-        <div>-->
-            <p> Welcome to CryptoCurrency, Find all the information on crypto currencies</p><br>
-            <ul>
-                <li v-for="(crypto, index) in cryptos" :key="index">
-
-                     <span>{{ crypto.image }} </span><br>
-                     <span>{{ crypto.symbol }}</span>
-                     <span>{{ crypto.id }} </span>
-                    <span>{{ crypto.name }} </span>
-                    <span>{{ crypto.current_price }} </span>
-                </li>
-            </ul>
+       
+            <div>
+                 <h2 style="margin: 0 auto;"> Welcome to CryptoCurrency, Find all the information on crypto currencies</h2><br>
+            </div>
+            <div style="width:86%;margin:50px auto;">
+                    <div class="cryptoDiv">
+                    <div class="logo" style="width:115px;text-align:left;"><strong>Logo</strong></div>
+                    <div class="name" style="width:230px;text-align=left;"><strong>Name</strong></div>
+                    <div class="symbol" style="width:250px;text-align=left;"><strong>symbol</strong></div>
+                    <div class="symbol" style="width:250px;text-align=left;"><strong>24h cap-change</strong></div>
+                    <div class="price" style="width:250px;text-align=left;"><strong>Current Price</strong></div>
+                    </div>
+                    <div v-for="(crypto, index) in cryptos" :key="index" class="cryptoDiv">
+                        <div class="logo" style="width:200px;text-align:left;">
+                            <img :src="crypto.image" alt="icon" width="40" height="40"/>
+                        </div>
+                        <div class="name" style="width:150px;text-align:left;">
+                            <p><strong>{{ crypto.name }}</strong> </p>
+                        </div>
+                        <div class="symbol" style="width:250px;text-align=left;">
+                            <span>{{ crypto.symbol }}</span>
+                        </div>
+                        <div style="width:250px;text-align=left;">
+                            <span>{{ crypto.market_cap_change_percentage_24h }}%</span>
+                        </div>
+                        <div style="width:250px;text-align=left;">
+                            <span>{{ crypto.current_price }}€</span>
+                        </div>
+                    </div>
+            </div>
         </div>
     </div>
 </template>
@@ -69,7 +87,7 @@ export default {
     //  },
      beforeCreate(){
          axios
-             .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=15&page=1')
+             .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=20&page=1&sparkline=true')
             .then(response => this.cryptos = response.data)
      }
 }
@@ -108,5 +126,12 @@ export default {
     .menu li {
         list-style:none;
         margin-left:20px;
+    }
+    .cryptoDiv{
+        display:flex;
+        flex-flow:row wrap;
+        align-items:center;
+        padding: 10px 0;
+        border-bottom: 1px solid lightgrey;
     }
 </style>
