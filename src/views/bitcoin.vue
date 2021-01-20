@@ -18,26 +18,58 @@
                     <li>Less</li>
                 </ul>
             </div>
+    <!-- search Bar -->
            <div class="searchBar">
                 <input v-model="searchCrypto" class="searchBar" type="text" placeholder="search for a crypto" autocomplete="off"/>
-                <!--<span v-if="searchCrypto && filteredList.length > 1 ">
-                {{filteredList.length}} resultat<span v-if="filteredList.length >= 2">s</span>-->
+                <span v-if="searchCrypto && filteredList.length > 1 ">
+                {{filteredList.length}} resultat<span v-if="filteredList.length >= 2">s</span></span>
             </div>
-            <!--  <div v-if="filteredList.length == []" class="no-result">
-              <h3>Désolé</h3>
-              <p>Aucun résultat trouvé</p>
-            </div> 
-            <div v-for="crypto in filteredList">
+    <!-- display search result -->
+           <!-- <div v-for="crypto in filteredList">
                 <span>{{ crypto.image }} </span>
                 <span>{{ crypto.name }} </span>
+            </div>-->
+            <div style="width:86%;margin:50px auto;">
+                    <div v-if="filteredList.length > 1" class="cryptoDiv">
+                    <div class="logo" style="width:115px;text-align:left;"><strong>Logo</strong></div>
+                    <div class="name" style="width:230px;text-align=left;"><strong>Name</strong></div>
+                    <div class="symbol" style="width:250px;text-align=left;"><strong>symbol</strong></div>
+                    <div class="symbol" style="width:250px;text-align=left;"><strong>24h cap-change</strong></div>
+                    <div class="price" style="width:250px;text-align=left;"><strong>Current Price</strong></div>
+                    </div>
+                    <div v-for="(crypto, index) in filteredList" :key="index" class="cryptoDiv">
+                        <div class="logo" style="width:200px;text-align:left;">
+                            <img :src="crypto.image" alt="icon" width="40" height="40"/>
+                        </div>
+                        <div class="name" style="width:150px;text-align:left;">
+                            <p><strong>{{ crypto.name }}</strong> </p>
+                        </div>
+                        <div class="symbol" style="width:250px;text-align=left;">
+                            <span>{{ crypto.symbol }}</span>
+                        </div>
+                        <div style="width:250px;text-align=left;">
+                            <span>{{ crypto.market_cap_change_percentage_24h }}%</span>
+                        </div>
+                        <div style="width:250px;text-align=left;">
+                            <span>{{ crypto.current_price }}€</span>
+                        </div>
+                    </div>
             </div>
-          </div> -->
+
+
+
+         
         </div>
        
             <div>
                  <h2 style="margin: 0 auto;"> Welcome to CryptoCurrency, Find all the information on crypto currencies</h2><br>
             </div>
-            <div style="width:86%;margin:50px auto;">
+             <!-- Display search error -->
+             <div v-if="filteredList.length == []" class="no-result">
+              <p>Désolé, aucun résultat trouvé</p>
+            </div> 
+            <!-- display all cryptos -->
+            <div v-if="filteredList.length == []" style="width:86%;margin:50px auto;">
                     <div class="cryptoDiv">
                     <div class="logo" style="width:115px;text-align:left;"><strong>Logo</strong></div>
                     <div class="name" style="width:230px;text-align=left;"><strong>Name</strong></div>
@@ -63,6 +95,7 @@
                         </div>
                     </div>
             </div>
+        </div>
     </div>
 </template>
 
@@ -74,25 +107,23 @@ export default {
         return {
             cryptos : [],
             searchCrypto: "",
-            
         }
      },
-    //  computed : {
-    //      filteredList(){
-    //          return this.cryptos.filter((crypto) => {
-    //          return crypto.name.toLowerCase().includes(this.searchCrypto.toLowerCase());
-    //      })
-    //     }
-    //  },
+     style : alert,
+     computed : {
+         filteredList(){
+             return this.cryptos.filter((crypto) => {
+             return crypto.name.toLowerCase().includes(this.searchCrypto.toLowerCase());
+         })
+        }
+     },
      beforeCreate(){
          axios
-             .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=20&page=1&sparkline=true')
+             .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=40&page=1&sparkline=true')
             .then(response => this.cryptos = response.data)
      }
 }
 </script>
-
-
 
 <style>
     .bitcoin{
