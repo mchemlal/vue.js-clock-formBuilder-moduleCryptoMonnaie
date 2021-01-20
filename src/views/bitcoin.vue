@@ -3,20 +3,12 @@
         <div class="bitcoin">
             <div class="logo">
                 <img src="../assets/gecko.png" alt="gecko" width="60" height="60"/> 
-                <span class="logoTitle" >GeckoCurrency</span>
+                <span class="logoTitle" >GeckoCrypto</span>
             </div>
             <div>
-                <ul class="menu">
-                    <li>Markets</li>
-                    <li>Currencies</li>
-                    <li>Community</li>
-                    <li>Farms</li>
-                    <li>Change</li>
-                    <li>news</li>
-                    <li>Learn</li>
-                    <li>More</li>
-                    <li>Less</li>
-                </ul>
+                <div>
+                 <h3 style="margin: 0 auto;"> Welcome to GeckoCrypto, Find all the information on crypto currencies</h3><br>
+            </div>
             </div>
     <!-- search Bar -->
            <div class="searchBar">
@@ -63,9 +55,7 @@
             </div>
         </div>
        
-            <div>
-                 <h2 style="margin: 0 auto;"> Welcome to CryptoCurrency, Find all the information on crypto currencies</h2><br><br>
-            </div>
+            
              <!-- Display search error -->
              <div v-if="filteredList.length == []" class="no-result" >
               <p v-bind:style="red">Désolé, aucun résultat trouvé</p>
