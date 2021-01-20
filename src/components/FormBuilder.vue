@@ -1,22 +1,20 @@
 <template>
     <div>
-        <el-card class="box-card" style="margin-right: 3px;"  id="dropzone">
+        <el-card class="box-card" style="margin-right: 3px;"  id="dropzone" @drop="drop_handler" @dragenter.prevent @dragover.prevent>
             <div slot="header" class="clearfix">
                 <span>Preview</span>
             </div>
-        <div v-for="(item, index) in schema.fields" :key="index">
-          <component :is="getCompo(item)"></component>
-        </div>
+          <div v-for="(item, index) in schema.fields" :key="index">
+            <component :is="getCompo(item)"></component>
+          </div>
         </el-card>
-     <el-card class="box-card">
+      <el-card class="box-card">
          <div slot="header" class="clearfix">
             <span>All Elements</span>
          </div>
-         <!-- <div v-for="o in 4" :key="o" class="text item" > -->
-            <el-button id="drag1" v-on:click="addTextArea" draggable="true" ondragstart="dragstart_handler(event)">Add Text Area</el-button>
-            <el-button v-on:click="addBouttonRadio" >Add Button Radio </el-button>
-         <!-- </div> -->
-        </el-card>
+            <el-button v-on:click="addTextArea" draggable="true" @dragstart.native="dragStart($event)">Add Text Area</el-button>
+            <el-button v-on:click="addBouttonRadio" draggable="true" @dragstart.native="dragStart" >Add Button Radio </el-button>
+      </el-card>
     </div>
 </template>
 
@@ -30,6 +28,11 @@ export default {
        
     },
     methods: {
+      dragStart(event) {
+          console.log('start');
+      
+        },
+
         addTextArea() {
             this.schema.fields.push({inputType: "textarea",
             label: "TextArea",
@@ -52,9 +55,17 @@ export default {
             }
         },
 
+        drop_handler(event) {
+          event.preventDefault();
+          var data = event.dataTransfer.getData("text/plain");
+          console.log(data);
+        },
+
     }
     
  } 
+
+ 
 
 
 

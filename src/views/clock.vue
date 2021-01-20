@@ -32,7 +32,7 @@ export default {
     inset 0 0 5px #fff, inset 0 0 10px #fff, inset 0 0 15px #fff,
     inset 0 0 20px #ff00de, inset 0 0 35px #ff00de, inset 0 0 40px #ff00de,
     inset 0 0 50px #ff00de, inset 0 0 75px #ff00de;
-      border: 1px solid #ff00de;;
+      border: 1px solid #ff00de;
 }
 #clock-international {
     display: flex;

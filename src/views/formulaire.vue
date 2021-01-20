@@ -1,7 +1,7 @@
 <template>
   <div>
     <clockDigital></clockDigital>
-    <FormBuilder :schema="schema" :model="model"></FormBuilder>   <!--- Props from FormBuilder = data() from script -->
+    <FormBuilder :schema="schema"></FormBuilder>   <!--- Props from FormBuilder = data() from script -->
   </div>
 </template>
 
