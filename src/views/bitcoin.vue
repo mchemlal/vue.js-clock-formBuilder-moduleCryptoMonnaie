@@ -20,9 +20,9 @@
             </div>
     <!-- search Bar -->
            <div class="searchBar">
+                <span v-if="searchCrypto && filteredList.length >= 1 " style="font-weight:bold;font-size:12px;">
+                {{filteredList.length}} resultat<span v-if="filteredList.length >= 1" style="font-weight:bold;">s</span></span>
                 <input v-model="searchCrypto" class="searchBar" type="text" placeholder="search for a crypto" autocomplete="off"/>
-                <span v-if="searchCrypto && filteredList.length > 1 ">
-                {{filteredList.length}} resultat<span v-if="filteredList.length >= 2">s</span></span>
             </div>
     <!-- display search result -->
            <!-- <div v-for="crypto in filteredList">
@@ -30,7 +30,7 @@
                 <span>{{ crypto.name }} </span>
             </div>-->
             <div style="width:86%;margin:50px auto;">
-                    <div v-if="filteredList.length > 1" class="cryptoDiv">
+                    <div v-if="filteredList.length >= 1" class="cryptoDiv" style="margin-top:60px;">
                     <div class="logo" style="width:115px;text-align:left;"><strong>Logo</strong></div>
                     <div class="name" style="width:230px;text-align=left;"><strong>Name</strong></div>
                     <div class="symbol" style="width:250px;text-align=left;"><strong>symbol</strong></div>
@@ -47,26 +47,28 @@
                         <div class="symbol" style="width:250px;text-align=left;">
                             <span>{{ crypto.symbol }}</span>
                         </div>
-                        <div style="width:250px;text-align=left;">
-                            <span>{{ crypto.market_cap_change_percentage_24h }}%</span>
+                    <div style="width:250px;text-align=left;">
+                        <div v-if="crypto.market_cap_change_percentage_24h < 0" >
+                            
+                            <span v-bind:style="red">{{ crypto.market_cap_change_percentage_24h }}%</span>
                         </div>
+                        <div v-else>
+                            <span v-bind:style="green">{{ crypto.market_cap_change_percentage_24h }}%</span>
+                        </div>
+                    </div>
                         <div style="width:250px;text-align=left;">
                             <span>{{ crypto.current_price }}€</span>
                         </div>
                     </div>
             </div>
-
-
-
-         
         </div>
        
             <div>
-                 <h2 style="margin: 0 auto;"> Welcome to CryptoCurrency, Find all the information on crypto currencies</h2><br>
+                 <h2 style="margin: 0 auto;"> Welcome to CryptoCurrency, Find all the information on crypto currencies</h2><br><br>
             </div>
              <!-- Display search error -->
-             <div v-if="filteredList.length == []" class="no-result">
-              <p>Désolé, aucun résultat trouvé</p>
+             <div v-if="filteredList.length == []" class="no-result" >
+              <p v-bind:style="red">Désolé, aucun résultat trouvé</p>
             </div> 
             <!-- display all cryptos -->
             <div v-if="filteredList.length == []" style="width:86%;margin:50px auto;">
@@ -87,14 +89,19 @@
                         <div class="symbol" style="width:250px;text-align=left;">
                             <span>{{ crypto.symbol }}</span>
                         </div>
-                        <div style="width:250px;text-align=left;">
-                            <span>{{ crypto.market_cap_change_percentage_24h }}%</span>
+                    <div style="width:250px;text-align=left;">
+                        <div v-if="crypto.market_cap_change_percentage_24h < 0" style="width:250px;text-align=left;">
+                            <span v-bind:style="red">{{ crypto.market_cap_change_percentage_24h }}%</span>
                         </div>
+                        <div v-else>
+                            <span v-bind:style="green">{{ crypto.market_cap_change_percentage_24h }}%</span>
+                        </div>
+                    </div>
                         <div style="width:250px;text-align=left;">
                             <span>{{ crypto.current_price }}€</span>
                         </div>
                     </div>
-            </div>
+                </div>
         </div>
     </div>
 </template>
@@ -107,9 +114,14 @@ export default {
         return {
             cryptos : [],
             searchCrypto: "",
+             red : {
+                 color : "red"   
+             }, 
+             green : {
+                 color : "green"   
+             }     
         }
      },
-     style : alert,
      computed : {
          filteredList(){
              return this.cryptos.filter((crypto) => {
@@ -119,7 +131,7 @@ export default {
      },
      beforeCreate(){
          axios
-             .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=40&page=1&sparkline=true')
+             .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=50&page=1&sparkline=true')
             .then(response => this.cryptos = response.data)
      }
 }
@@ -143,7 +155,7 @@ export default {
         font-weight:bold;
     }
     .searchBar{
-        margin-bottom:20px;
+        margin-bottom:30px;
         height:30px;
         width:180px;
     }
