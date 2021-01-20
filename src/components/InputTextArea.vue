@@ -20,8 +20,7 @@ export default {
     hide: function () {
       this.isDisplay = false;
     }
-        }
-    
+        },
     }
 
 </script>

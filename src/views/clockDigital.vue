@@ -23,10 +23,10 @@ export default {
             return dateFns.getHours(this.now)
         },
         min() {
-            return dateFns.getMinutes(this.now)
+            return(dateFns.getMinutes(this.now) < 10 ? '0' : '') + dateFns.getMinutes(this.now)
         },
         sec() {
-            return dateFns.getSeconds(this.now)
+            return(dateFns.getSeconds(this.now) < 10 ? '0' : '') + dateFns.getSeconds(this.now)
         },
         str_time() {
             return `${this.hr}:${this.min}:${this.sec}`

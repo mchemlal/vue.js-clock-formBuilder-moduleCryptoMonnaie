@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-card class="box-card" style="margin-right: 3px;">
+        <el-card class="box-card" style="margin-right: 3px;"  id="dropzone">
             <div slot="header" class="clearfix">
                 <span>Preview</span>
             </div>
@@ -13,7 +13,7 @@
             <span>All Elements</span>
          </div>
          <!-- <div v-for="o in 4" :key="o" class="text item" > -->
-            <el-button v-on:click="addTextArea" >Add Text Area</el-button>
+            <el-button id="drag1" v-on:click="addTextArea" draggable="true" ondragstart="dragstart_handler(event)">Add Text Area</el-button>
             <el-button v-on:click="addBouttonRadio" >Add Button Radio </el-button>
          <!-- </div> -->
         </el-card>
@@ -23,6 +23,7 @@
 <script>
 import InputTextArea from "./InputTextArea"
 import RadioBox from "./RadioBox"
+
 export default {
     props: {
         schema: Object,
@@ -33,12 +34,14 @@ export default {
             this.schema.fields.push({inputType: "textarea",
             label: "TextArea",
             model: "areavalue",
+            id: 0
       });
     },
         addBouttonRadio() {
                 this.schema.fields.push({inputType: "bouttonRadio",
                 label: "bouttonRadio",
                 model: "radiobox",
+                id: 1
       });
     },
         getCompo(item) {
@@ -47,9 +50,14 @@ export default {
             } else if(item.inputType == "bouttonRadio") {
                 return RadioBox
             }
-        }
+        },
+
     }
-}
+    
+ } 
+
+
+
 </script>
 
 <style>
