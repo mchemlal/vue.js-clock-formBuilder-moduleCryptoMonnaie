@@ -1,7 +1,7 @@
 <template>
   <div>
     <clockDigital></clockDigital>
-    <FormBuilder :schema="schema"></FormBuilder>   <!--- Props from FormBuilder = data() from script -->
+    <FormBuilder :schema="schema" :model="model"></FormBuilder>   <!--- Props from FormBuilder = data() from script -->
   </div>
 </template>
 
@@ -17,9 +17,7 @@ export default {
     components: { 
       FormBuilder,
       clockDigital
-        
-    
-   
+      
         },
      data() {
         return {

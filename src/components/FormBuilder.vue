@@ -12,8 +12,8 @@
          <div slot="header" class="clearfix">
             <span>All Elements</span>
          </div>
-            <el-button v-on:click="addTextArea" draggable="true" @dragstart.native="dragStart($event)">Add Text Area</el-button>
-            <el-button v-on:click="addBouttonRadio" draggable="true" @dragstart.native="dragStart" >Add Button Radio </el-button>
+            <el-button @click="addTextArea" draggable="true" @dragend.native="addTextArea">Add Text Area</el-button>
+            <el-button @click="addBouttonRadio" draggable="true" @dragend.native="addBouttonRadio" >Add Button Radio </el-button>
       </el-card>
     </div>
 </template>
