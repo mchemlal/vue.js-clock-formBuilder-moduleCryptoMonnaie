@@ -20,7 +20,7 @@ export default {
 
     computed: {
         hr() {
-            return dateFns.getHours(this.now)
+            return(dateFns.getHours(this.now) < 10 ? '0' : '') + dateFns.getHours(this.now)
         },
         min() {
             return(dateFns.getMinutes(this.now) < 10 ? '0' : '') + dateFns.getMinutes(this.now)
