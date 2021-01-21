@@ -35,12 +35,12 @@ export default {
 #clock {
  animation-iteration-count: infinite;
        transition: none;  width:500px; background:#000;
-      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
-    0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de,
+      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #2c3e50,
+    0 0 35px #2c3e50, 0 0 40px #2c3e50, 0 0 50px #2c3e50, 0 0 75px #2c3e50,
     inset 0 0 5px #fff, inset 0 0 10px #fff, inset 0 0 15px #fff,
-    inset 0 0 20px #ff00de, inset 0 0 35px #ff00de, inset 0 0 40px #ff00de,
-    inset 0 0 50px #ff00de, inset 0 0 75px #ff00de;
-      border: 1px solid #ff00de;
+    inset 0 0 20px #2c3e50, inset 0 0 35px #2c3e50, inset 0 0 40px #2c3e50,
+    inset 0 0 50px #2c3e50, inset 0 0 75px #2c3e50;
+    
 }
 #clock-international {
     display: flex;
