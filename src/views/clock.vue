@@ -2,6 +2,7 @@
  <div>
      <v-clock id="clock" size="300px" border="none" color="#FFFFFF" bg="#4AB7BD" style="margin-top: 100px; margin-bottom: 50px;"></v-clock>
      <div id="clock-international">
+     <div class="brand">Team Boulard</div>
      <div style="text-align:center;padding:1em 0;"><h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/fr/city/2988507%22%3E"></a><span style="color:gray;">Heure actuelle</span><br />Paris, France</h4> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=fr&size=small&timezone=Europe%2FParis" width="100%" height="90" frameborder="0" seamless></iframe></div>
      <div style="text-align:center;padding:1em 0;"><h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/fr/city/2643743%22%3E"></a><span style="color:gray;">Heure actuelle</span><br />London, Royaume-Uni</h4> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=fr&size=small&timezone=Europe%2FLondon" width="100%" height="90" frameborder="0" seamless></iframe></div>
      <div style="text-align:center;padding:1em 0;"><h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/fr/city/1816670%22%3E"></a><span style="color:gray;">Heure actuelle</span><br />Beijing, Chine</h4> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=fr&size=small&timezone=Asia%2FShanghai" width="100%" height="90" frameborder="0" seamless></iframe></div>
@@ -22,7 +23,11 @@ export default {
 </script>
 
 <style>
-
+@font-face {
+ font-family: "Tangerine";
+ src: url(https://fonts.gstatic.com/s/tangerine/v12/IurY6Y5j_oScZZow4VOxCZZMprNA4A.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 #clock {
  animation-iteration-count: infinite;
@@ -39,6 +44,7 @@ export default {
     flex-direction: row;
     justify-content: center;
 }
+
 .brand{
     font-size:24px;
     font-style:italic;
