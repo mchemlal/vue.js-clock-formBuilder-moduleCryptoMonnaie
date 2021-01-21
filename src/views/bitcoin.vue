@@ -19,6 +19,7 @@
             </div>
     <!-- display search result -->
             <div style="width:86%;margin:50px auto;">
+                    <!-- si la recherche n'est pas vide-->
                     <div v-if="filteredList.length >= 1" class="cryptoDiv" style="margin-top:60px;">
                     <div class="logo" style="width:115px;text-align:left;"><strong>Logo</strong></div>
                     <div class="name" style="width:230px;text-align=left;"><strong>Name</strong></div>
@@ -26,7 +27,7 @@
                     <div class="symbol" style="width:250px;text-align=left;"><strong>24h cap-change</strong></div>
                     <div class="price" style="width:250px;text-align=left;"><strong>Current Price</strong></div>
                     </div>
-                    <!-- si la recherche n'est pas vide, on boucle le tableau des resultats de recherche -->
+                    <!-- on boucle le tableau des resultats de recherche -->
                     <div v-for="(crypto, index) in filteredList" :key="index" class="cryptoDiv">
                         <div class="logo" style="width:200px;text-align:left;">
                             <img :src="crypto.image" alt="icon" width="40" height="40"/>
@@ -54,11 +55,12 @@
         </div>
        
             
-             <!-- Display search error -->
+             <!-- Display search error : si la recherche est vide-->
              <div v-if="filteredList.length == []" class="no-result" >
               <p v-bind:style="red">Désolé, aucun résultat trouvé</p>
             </div> 
             <!-- display all cryptos -->
+            <!-- si recherche est vide... -->
             <div v-if="filteredList.length == []" style="width:86%;margin:50px auto;">
                     <div class="cryptoDiv">
                     <div class="logo" style="width:115px;text-align:left;"><strong>Logo</strong></div>
@@ -67,7 +69,7 @@
                     <div class="symbol" style="width:250px;text-align=left;"><strong>24h cap-change</strong></div>
                     <div class="price" style="width:250px;text-align=left;"><strong>Current Price</strong></div>
                     </div>
-                    <!-- si la recherche est vide, on affiche toutes les cryptos -->
+                    <!-- on affiche toutes les cryptos -->
                     <div v-for="(crypto, index) in cryptos" :key="index" class="cryptoDiv">
                         <div class="logo" style="width:200px;text-align:left;">
                             <img :src="crypto.image" alt="icon" width="40" height="40"/>
@@ -113,9 +115,9 @@ export default {
      },
      computed : {
          filteredList(){
-             //retourne un tableau  qui contient qui contient les elements...
+             //retourne un tableau  qui contient les elements...
              return this.cryptos.filter((crypto) => {
-            //qui sont un nom de crypto et ...   qui sont tappés dans l'input( value = searchCrypto)
+            //qui sont un nom de crypto existant et ...   qui sont tappés dans l'input( value = searchCrypto)
              return crypto.name.toLowerCase().includes(this.searchCrypto.toLowerCase());
          })
         }
