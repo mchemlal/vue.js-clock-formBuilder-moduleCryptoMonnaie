@@ -5,7 +5,7 @@
                 <span>Preview</span>
             </div>
           <div v-for="(item, index) in schema.fields" :key="index">
-            <component :is="getCompo(item)"></component>
+            <component :is="getCompo(item)" :model="model"></component>
           </div>
         </el-card>
       <el-card class="box-card">
@@ -25,25 +25,24 @@ import RadioBox from "./RadioBox"
 export default {
     props: {
         schema: Object,
+        model: Object
        
     },
     methods: {
-      dragStart(event) {
-          console.log('start');
-      
-        },
 
         addTextArea() {
-            this.schema.fields.push({inputType: "textarea",
+            this.schema.fields.push({
+            inputType: "textarea",
             label: "TextArea",
-            model: "areavalue",
+            model: "text",
             id: 0
       });
     },
         addBouttonRadio() {
-                this.schema.fields.push({inputType: "bouttonRadio",
+                this.schema.fields.push({
+                inputType: "bouttonRadio",
                 label: "bouttonRadio",
-                model: "radiobox",
+                model: "radiovalue",
                 id: 1
       });
     },
@@ -53,6 +52,10 @@ export default {
             } else if(item.inputType == "bouttonRadio") {
                 return RadioBox
             }
+        },
+
+        getData(item) {
+          item.model = this.model
         },
 
         drop_handler(event) {

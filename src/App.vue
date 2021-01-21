@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <header>
+      <clockDigital style=""></clockDigital>
+    </header>
       <router-link to="/">Home</router-link> |
       <router-link to="/formulaire">Formulaire</router-link> |
       <router-link to="/bitcoin">Crypto-monnaies</router-link> |
@@ -9,11 +12,14 @@
 </template>
 
 <script>
+import clockDigital from './views/clockDigital'
+
 
 export default {
   name: 'App',
   components: {
-   
+    clockDigital
+
   }
 }
 </script>
