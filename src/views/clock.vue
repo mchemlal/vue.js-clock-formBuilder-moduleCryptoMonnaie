@@ -39,7 +39,17 @@ export default {
     flex-direction: row;
     justify-content: center;
 }
-
+.brand{
+    font-size:24px;
+    font-style:italic;
+    font-weight:bold;
+    position :absolute;
+    bottom:373px;
+    left: 670px;
+    z-index: 0;
+    opacity: 0.6;
+    font-family : "Tangerine";
+}
 
 
 
