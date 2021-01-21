@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header id="header">
-      <clockDigital style="color: white; font-size: 20px; text-align: right; padding: 20px 30px 0 0;"></clockDigital>
+      <clockDigital style="color: white; font-size: 20px; text-align: right; padding: 20px 30px 0px 0px;verticlal-align:center;"></clockDigital>
       <div id="divLink">
       <router-link class="routerLink" to="/">Home</router-link> |
       <router-link class="routerLink" to="/formulaire">Formulaire</router-link> |

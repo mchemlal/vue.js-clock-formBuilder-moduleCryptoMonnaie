@@ -10,17 +10,14 @@
                  <h3 style="margin: 0 auto;"> Welcome to GeckoCrypto, Find all the information on crypto currencies</h3><br>
             </div>
             </div>
-    <!-- search Bar -->
+    <!-- search Bar : si au moins 1 resultat, on affiche le nombre de résultats -->
            <div class="searchBar">
                 <span v-if="searchCrypto && filteredList.length >= 1 " style="font-weight:bold;font-size:12px;">
                 {{filteredList.length}} resultat<span v-if="filteredList.length >= 1" style="font-weight:bold;">s</span></span>
+                <!--  les entrées utilisateur seront affectées à searchcrypto grace au vmodel  -->
                 <input v-model="searchCrypto" class="searchBar" type="text" placeholder="search for a crypto" autocomplete="off"/>
             </div>
     <!-- display search result -->
-           <!-- <div v-for="crypto in filteredList">
-                <span>{{ crypto.image }} </span>
-                <span>{{ crypto.name }} </span>
-            </div>-->
             <div style="width:86%;margin:50px auto;">
                     <div v-if="filteredList.length >= 1" class="cryptoDiv" style="margin-top:60px;">
                     <div class="logo" style="width:115px;text-align:left;"><strong>Logo</strong></div>
@@ -29,6 +26,7 @@
                     <div class="symbol" style="width:250px;text-align=left;"><strong>24h cap-change</strong></div>
                     <div class="price" style="width:250px;text-align=left;"><strong>Current Price</strong></div>
                     </div>
+                    <!-- si la recherche n'est pas vide, on boucle le tableau des resultats de recherche -->
                     <div v-for="(crypto, index) in filteredList" :key="index" class="cryptoDiv">
                         <div class="logo" style="width:200px;text-align:left;">
                             <img :src="crypto.image" alt="icon" width="40" height="40"/>
@@ -69,6 +67,7 @@
                     <div class="symbol" style="width:250px;text-align=left;"><strong>24h cap-change</strong></div>
                     <div class="price" style="width:250px;text-align=left;"><strong>Current Price</strong></div>
                     </div>
+                    <!-- si la recherche est vide, on affiche toutes les cryptos -->
                     <div v-for="(crypto, index) in cryptos" :key="index" class="cryptoDiv">
                         <div class="logo" style="width:200px;text-align:left;">
                             <img :src="crypto.image" alt="icon" width="40" height="40"/>
@@ -80,6 +79,7 @@
                             <span>{{ crypto.symbol }}</span>
                         </div>
                     <div style="width:250px;text-align=left;">
+                    <!-- on change la couleur selon pourcentage -->
                         <div v-if="crypto.market_cap_change_percentage_24h < 0" style="width:250px;text-align=left;">
                             <span v-bind:style="red">{{ crypto.market_cap_change_percentage_24h }}%</span>
                         </div>
@@ -113,7 +113,9 @@ export default {
      },
      computed : {
          filteredList(){
+             //retourne un tableau  qui contient qui contient les elements...
              return this.cryptos.filter((crypto) => {
+            //qui sont un nom de crypto et ...   qui sont tappés dans l'input( value = searchCrypto)
              return crypto.name.toLowerCase().includes(this.searchCrypto.toLowerCase());
          })
         }
@@ -122,6 +124,7 @@ export default {
          axios
              .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=50&page=1&sparkline=true')
             .then(response => this.cryptos = response.data)
+            .catch(error => console.log(error))
      }
 }
 </script>
