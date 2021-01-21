@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-card class="box-card" style="margin-right: 3px;"  id="dropzone" @drop="drop_handler" @dragenter.prevent @dragover.prevent>
+        <el-card class="box-card" style="margin-right: 3px;"  id="dropzone" @dragenter.prevent @dragover.prevent>
             <div slot="header" class="clearfix">
                 <span>Preview</span>
             </div>
@@ -14,6 +14,9 @@
          </div>
             <el-button @click="addTextArea" draggable="true" @dragend.native="addTextArea">Add Text Area</el-button>
             <el-button @click="addBouttonRadio" draggable="true" @dragend.native="addBouttonRadio" >Add Button Radio </el-button>
+            <p></p>
+            <el-button @click="addDropDown" draggable="true" @dragend.native="addDropDown">Add Dropdown</el-button>
+            <el-button @click="addInputNumber" draggable="true" @dragend.native="addInputNumber">Add Input Number</el-button>
       </el-card>
     </div>
 </template>
@@ -21,6 +24,8 @@
 <script>
 import InputTextArea from "./InputTextArea"
 import RadioBox from "./RadioBox"
+import Dropdown from "./Dropdown"
+import InputNumber from "./InputNumber"
 
 export default {
     props: {
@@ -46,22 +51,33 @@ export default {
                 id: 1
       });
     },
+     addDropDown() {
+                this.schema.fields.push({
+                inputType: "dropdown",
+                label: "dropdown",
+                model: "dropdown",
+                id: 2
+      });
+    },
+    addInputNumber() {
+                this.schema.fields.push({
+                inputType: "number",
+                label: "number",
+                model: "number",
+                id: 3
+      });
+      
+    },
         getCompo(item) {
             if (item.inputType == "textarea") {
                 return InputTextArea
             } else if(item.inputType == "bouttonRadio") {
                 return RadioBox
+            } else if(item.inputType == "dropdown") {
+                return Dropdown
+            } else if(item.inputType == "number") {
+                return InputNumber
             }
-        },
-
-        getData(item) {
-          item.model = this.model
-        },
-
-        drop_handler(event) {
-          event.preventDefault();
-          var data = event.dataTransfer.getData("text/plain");
-          console.log(data);
         },
 
     }

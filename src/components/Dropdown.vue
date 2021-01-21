@@ -1,7 +1,12 @@
 <template>
     <div>
   <div v-if="isDisplay">
-    <textarea id="mytextarea" type="text" placeholder="Enter your text..." cols="30" rows="5" style="outline: 1px green" v-model="model.text"></textarea>
+    <select name="dropdown" id="mydropdown" v-model="model.option">
+    <option value="">--Please choose an option</option>
+    <option value="Mcdo">Mcdo</option>
+    <option value="KFC">KFC</option>
+    <option value="Kebab">Kebab</option>
+    </select>
     <button v-on:click="hide" style="margin-left: 10px">🗑</button>
       <pre>
       {{ JSON.stringify(model, null, 2)}} <!-- ARG(valeur, remplacant, espace)-->
@@ -17,7 +22,7 @@ export default {
   
    return {
      model: {
-            text: '',
+            option: '',
      },
      isDisplay: true
      }

@@ -1,7 +1,7 @@
 <template>
     <div>
   <div v-if="isDisplay">
-    <textarea id="mytextarea" type="text" placeholder="Enter your text..." cols="30" rows="5" style="outline: 1px green" v-model="model.text"></textarea>
+    <input id="mynumber" type="number" v-model="model.number">
     <button v-on:click="hide" style="margin-left: 10px">🗑</button>
       <pre>
       {{ JSON.stringify(model, null, 2)}} <!-- ARG(valeur, remplacant, espace)-->
@@ -17,7 +17,7 @@ export default {
   
    return {
      model: {
-            text: '',
+            number: '',
      },
      isDisplay: true
      }
