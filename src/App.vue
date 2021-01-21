@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <clockDigital style=""></clockDigital>
+      <clockDigital></clockDigital>
     </header>
       <router-link to="/">Home</router-link> |
       <router-link to="/formulaire">Formulaire</router-link> |

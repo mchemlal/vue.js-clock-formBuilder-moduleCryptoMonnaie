@@ -5,7 +5,7 @@
                 <span>Preview</span>
             </div>
           <div v-for="(item, index) in schema.fields" :key="index">
-            <component :is="getCompo(item)" :model="model"></component>
+            <component :is="getCompo(item)"></component>
           </div>
         </el-card>
       <el-card class="box-card">

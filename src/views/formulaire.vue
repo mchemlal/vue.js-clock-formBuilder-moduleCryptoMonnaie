@@ -1,9 +1,5 @@
 <template>
   <div>
-    <pre>
-      {{ JSON.stringify(model, null, 2)}} <!-- ARG(valeur, remplacant, espace)-->
-    </pre>
-    <input type="text" v-model="model.test">
     <FormBuilder :schema="schema" :model="model"></FormBuilder>   <!--- Props from FormBuilder = data() from script -->
   </div>
 </template>

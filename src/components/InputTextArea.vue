@@ -3,10 +3,12 @@
         <div class="test">
 
   <div v-if="isDisplay">
-    <textarea id="mytextarea" type="text" placeholder="Entrer votre texte..." cols="30" rows="5" style="outline: 1px green" v-model="text"></textarea>
-    <button type="submit">✅</button>
+    <textarea id="mytextarea" type="text" placeholder="Entrer votre texte..." cols="30" rows="5" style="outline: 1px green" v-model="model.text"></textarea>
     <button v-on:click="hide">🗑</button>
-    <p>{{ text }}</p>
+      <pre>
+      {{ JSON.stringify(model, null, 2)}} <!-- ARG(valeur, remplacant, espace)-->
+    </pre>
+    <hr>
   </div>
 </div>
     </div>
@@ -17,7 +19,9 @@ export default {
     data() {
   
    return {
-     text: '',
+     model: {
+            text: '',
+     },
      isDisplay: true
      }
   },
