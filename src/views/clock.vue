@@ -43,6 +43,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    position:relative;
 }
 
 .brand{
@@ -50,8 +51,8 @@ export default {
     font-style:italic;
     font-weight:bold;
     position :absolute;
-    bottom:373px;
-    left: 670px;
+    bottom:465px;
+    left: 663px;
     z-index: 0;
     opacity: 0.6;
     font-family : "Tangerine";

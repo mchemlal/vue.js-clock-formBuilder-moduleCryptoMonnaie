@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-card class="box-card" style="margin-right: 3px;"  id="dropzone" @dragenter.prevent @dragover.prevent>
+        <el-card class="box-card" style="margin-right: 3px;overflow:auto;"  id="dropzone" @dragenter.prevent @dragover.prevent>
             <div slot="header" class="clearfix">
                 <span>Preview</span>
             </div>
