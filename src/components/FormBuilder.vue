@@ -31,19 +31,7 @@ import Dropdown from "./Dropdown"
 import InputNumber from "./InputNumber"
 
 export default {
-  data() {
-   return {
-     model: {
-            text: '',
-            number: '',
-            title: '',
-            radiovalue: '',
-            option: '',
-           
-     },
-   
-     }
-  },
+  
     props: {
         schema: Object,
         model: Object
