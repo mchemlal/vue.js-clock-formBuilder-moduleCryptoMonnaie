@@ -1,11 +1,8 @@
 <template>
     <div>
   <div v-if="isDisplay">
-    <input id="mynumber" type="number" v-model="model.number">
+    <input id="mynumber" type="number" v-model="model[field.model]">
     <button v-on:click="hide" style="margin-left: 10px">🗑</button>
-      <pre>
-      {{ JSON.stringify(model, null, 2)}} <!-- ARG(valeur, remplacant, espace)-->
-    </pre>
     <hr>
   </div>
 </div>
@@ -13,12 +10,16 @@
 
 <script>
 export default {
+
+    props: {
+        model: {},
+        field: {}
+
+    },
+
     data() {
   
    return {
-     model: {
-            number: '',
-     },
      isDisplay: true
      }
   },

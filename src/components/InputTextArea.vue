@@ -1,11 +1,8 @@
 <template>
     <div>
   <div v-if="isDisplay">
-    <textarea id="mytextarea" type="text" placeholder="Enter your text..." cols="30" rows="5" style="outline: 1px green" v-model="model.text"></textarea>
+    <textarea id="mytextarea" type="text" placeholder="Enter your text..." cols="30" rows="5" style="outline: 1px green" v-model="model[field.model]"></textarea>
     <button v-on:click="hide" style="margin-left: 10px">🗑</button>
-      <pre>
-      {{ JSON.stringify(model, null, 2)}} <!-- ARG(valeur, remplacant, espace)-->
-    </pre>
     <hr>
   </div>
 </div>
@@ -13,12 +10,14 @@
 
 <script>
 export default {
+    props: {
+          model: {},
+          field: {}
+
+      },
     data() {
   
    return {
-     model: {
-            text: '',
-     },
      isDisplay: true
      }
   },

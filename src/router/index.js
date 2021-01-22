@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '../views/home.vue'
+import bitcoin from '../views/bitcoin.vue'
 
 Vue.use(VueRouter)
 
@@ -14,12 +15,12 @@ const routes = [
   {
     path: '/formulaire',
     name: 'formulaire',
-    component: () => import(/* webpackChunkName: "about" */ '../views/formulaire.vue')
+    component: () => import('../views/formulaire.vue')
   },
   {
     path: '/bitcoin',
     name: 'bitcoin',
-    component: () => import('../views/bitcoin.vue')
+    component: bitcoin
   },
   {
     path: '/clock',

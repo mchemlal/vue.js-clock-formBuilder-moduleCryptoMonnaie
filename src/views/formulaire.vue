@@ -21,12 +21,8 @@ export default {
           schema: {
             fields: 
             [{}]
-     },   
-          model: {
-            text: '',
-            radiovalue: true,
-            test: ''
-
+     },   model: {
+            
      }
             
     }

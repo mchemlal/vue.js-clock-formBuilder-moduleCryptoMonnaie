@@ -1,11 +1,14 @@
 <template>
     <div>
+       <pre>
+      {{ JSON.stringify(model, null, 2)}} <!-- ARG(valeur, remplacant, espace)-->
+    </pre>
         <el-card class="box-card" style="margin-right: 3px;overflow:auto;"  id="dropzone" @dragenter.prevent @dragover.prevent>
             <div slot="header" class="clearfix">
                 <span>Preview</span>
             </div>
-          <div v-for="(item, index) in schema.fields" :key="index">
-            <component :is="getCompo(item)"></component>
+          <div v-for="(item, index) in schema.fields" :key="index"> 
+            <component :is="getCompo(item)" :model="model"  :field="item"></component> <!--"is" pour basculer entre des composants -->
           </div>
         </el-card>
       <el-card class="box-card">
@@ -28,43 +31,48 @@ import Dropdown from "./Dropdown"
 import InputNumber from "./InputNumber"
 
 export default {
+  data() {
+   return {
+     model: {
+            text: '',
+            number: '',
+            title: '',
+            radiovalue: '',
+            option: '',
+           
+     },
+   
+     }
+  },
     props: {
         schema: Object,
         model: Object
-       
     },
-    methods: {
 
+    methods: {
         addTextArea() {
             this.schema.fields.push({
             inputType: "textarea",
-            label: "TextArea",
-            model: "text",
-            id: 0
+            model: "textarea"
+          
       });
     },
         addBouttonRadio() {
                 this.schema.fields.push({
-                inputType: "bouttonRadio",
-                label: "bouttonRadio",
-                model: "radiovalue",
-                id: 1
+                inputType: "bouttonRadio", 
+                model: "bouttonRadio"    
       });
     },
-     addDropDown() {
+        addDropDown() {
                 this.schema.fields.push({
-                inputType: "dropdown",
-                label: "dropdown",
-                model: "dropdown",
-                id: 2
+                inputType: "dropdown",    
+                model: "dropdown" 
       });
     },
-    addInputNumber() {
+        addInputNumber() {
                 this.schema.fields.push({
-                inputType: "number",
-                label: "number",
-                model: "number",
-                id: 3
+                inputType: "number",   
+                model: "number"
       });
       
     },
@@ -79,14 +87,8 @@ export default {
                 return InputNumber
             }
         },
-
     }
-    
  } 
-
- 
-
-
 
 </script>
 

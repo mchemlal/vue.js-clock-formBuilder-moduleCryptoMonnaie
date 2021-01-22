@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="isDisplay">
-        <input for="title" placeholder="Enter a title" contenteditable="" v-model="model.title" style="border: none; outline: none; margin-left: 70px;">
+        <input for="title" placeholder="Enter a title" contenteditable="" v-model="model[field.model]" style="border: none; outline: none; margin-left: 70px;">
         <br>
         <input type="radio" id="contactChoice1"
         name="contact" value="Champ 1"  v-model="model.radiovalue">
@@ -15,9 +15,6 @@
      name="contact" value="Champ 3"  v-model="model.radiovalue">
     <label for="contactChoice3">Champ 3</label>
     <button v-on:click="hide" style="margin-left: 10px">🗑</button>
-    <pre>
-      {{ JSON.stringify(model, null, 2)}} <!-- ARG(valeur, remplacant, espace)-->
-    </pre>
     <hr>
     </div>
     </div>
@@ -25,12 +22,13 @@
 
 <script>
 export default {
+      props: {
+                model: {},
+                field: {}
+
+            },
     data() {
    return {
-       model: {
-            title: '',
-            radiovalue: '',
-     },
        isDisplay: true}
   },
 
