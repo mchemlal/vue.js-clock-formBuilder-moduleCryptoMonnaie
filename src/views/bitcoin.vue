@@ -56,12 +56,12 @@
        
             
              <!-- Display search error : si la recherche est vide-->
-             <div v-if="filteredList.length == []" class="no-result" >
+             <div v-if="filteredList.length == 0" class="no-result" >
               <p v-bind:style="red">Désolé, aucun résultat trouvé</p>
             </div> 
             <!-- display all cryptos -->
             <!-- si recherche est vide... -->
-            <div v-if="filteredList.length == []" style="width:86%;margin:50px auto;">
+            <div v-if="filteredList.length == 0" style="width:86%;margin:50px auto;">
                     <div class="cryptoDiv">
                     <div class="logo" style="width:115px;text-align:left;"><strong>Logo</strong></div>
                     <div class="name" style="width:230px;text-align=left;"><strong>Name</strong></div>
@@ -109,8 +109,9 @@ export default {
                  color : "red"   
              }, 
              green : {
-                 color : "green"   
-             }     
+                 color : "green"  
+             },  
+             loading: true   
         }
      },
      computed : {
@@ -123,9 +124,12 @@ export default {
         }
      },
      beforeCreate(){
+         this.loading = true
          axios
              .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=50&page=1&sparkline=true')
-            .then(response => this.cryptos = response.data)
+            .then(response => {
+                this.cryptos = response.data // need dans html If pour afficher logo de chargement.
+                this.loading = false })
             .catch(error => console.log(error))
      }
 }

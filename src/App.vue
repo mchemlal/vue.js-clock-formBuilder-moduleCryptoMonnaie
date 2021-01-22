@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app"> <!-- point d'entrée de l'application via id "app" qui est "mount" dans le script main.js-->
     <header id="header">
       <clockDigital style="color: white; font-size: 20px; text-align: right; padding: 20px 30px 0px 0px;verticlal-align:center;"></clockDigital>
       <div id="divLink">
-      <router-link class="routerLink" to="/">Home</router-link> |
+      <router-link class="routerLink" to="/">Home</router-link> | <!-- redirection vers la vue Home.vue -->
       <router-link class="routerLink" to="/formulaire">Formulaire</router-link> |
       <router-link class="routerLink" to="/bitcoin">Crypto-monnaies</router-link> |
       <router-link class="routerLink" to="/clock">L'horloge</router-link> |
@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import clockDigital from './views/clockDigital'
+import clockDigital from './views/clockDigital' // import de la vue clock digital 
 
 
-export default {
-  name: 'App',
+export default { 
+  name: 'App', // export de la vue principale qui permettra de lancer l'application sur le navigateur -> sera importer dans le main.js
   components: {
     clockDigital
 
